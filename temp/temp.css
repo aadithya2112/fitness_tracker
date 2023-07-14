@@ -1,0 +1,23 @@
+/* Custom styles */
+
+body {
+    background-color: #f8f9fa;
+  }
+  
+  header {
+    margin-bottom: 20px;
+  }
+  
+  .card {
+    border: none;
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  footer {
+    color: #fff;
+  }
+  

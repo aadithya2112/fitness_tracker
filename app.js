@@ -1,15 +1,20 @@
 require('dotenv').config();
+
 const express = require("express");
-const port = 3000;
+const axios = require('axios');
 const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const session = require("express-session");
+const bcrypt = require("bcrypt");
+
 const databaseURI = process.env.DATABASE_URI;
 const secret = process.env.SECRET_KEY;
-const bcrypt = require("bcrypt");
+const apiKey = process.env.API_KEY;
+const port = 3000;
+
 
 
 app.set('view engine', 'ejs');
@@ -113,9 +118,26 @@ app.post("/login", passport.authenticate("local", {
     failureFlash: true
 }));
 
-app.get("/", ensureAuthenticated, (req, res) => {
-    // render home page
-    res.render("index");
+app.get("/", ensureAuthenticated, async (req, res) => {
+    // var quote = "";
+    var by = "";
+    const category = "fitness";
+    try {
+        const response = await axios.get('https://api.api-ninjas.com/v1/quotes?category=fitness', {
+          headers: {
+            'X-Api-Key': apiKey
+          }
+        });
+    
+        const quote = response.data[0]['quote'];
+        // console.log(quote);
+        res.render("index", {quote: quote});
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Failed to fetch random quote' });
+      }
+
+
 });
 
 app.listen(port, () => {

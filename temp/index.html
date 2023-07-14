@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitness Tracker</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --primary-color: #000000;
+      --accent-color: #FF6B6B;
+      --light-color: #FFFFFF;
+    }
+
+    body {
+      background-color: var(--primary-color);
+      background-color: black;
+    }
+    footer.bg-dark {
+  background-color: #000000 !important;
+}
+
+
+
+
+    header {
+      margin-bottom: 20px;
+    }
+
+    .navbar {
+      background-color: var(--primary-color);
+    }
+
+    .navbar-brand,
+    .navbar-toggler-icon {
+      color: var(--light-color);
+    }
+
+    .navbar-nav .nav-link {
+      color: var(--light-color);
+      transition: color 0.2s;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: var(--accent-color);
+    }
+
+    h1,
+    h5,
+    p,
+    .card-title {
+      color: var(--light-color);
+    }
+
+    .card {
+      background-color: var(--primary-color);
+      border: none;
+      transition: transform 0.2s;
+      color: var(--light-color);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+    }
+
+    .card-img-top {
+      border-radius: 5px 5px 0 0;
+    }
+
+    .btn-primary {
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--light-color);
+      border-color: var(--light-color);
+      color: var(--primary-color);
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: var(--light-color);
+    }
+  </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+          <a class="navbar-brand" href="#">Fitness Tracker</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Workouts</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Progress</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Sign In</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Log In</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      
+
+  <main class="container mt-4">
+    <h1>Welcome to Fitness Tracker</h1>
+    <p>Track and monitor your fitness activities to achieve your goals.</p>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card mb-4">
+          <img src="https://images.pexels.com/photos/3764011/pexels-photo-3764011.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="Activity 1">
+          <div class="card-body">
+            <h5 class="card-title">Running</h5>
+            <p class="card-text">Track your running sessions and analyze your performance.</p>
+            <a href="#" class="btn btn-primary">Start Tracking</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card mb-4">
+          <img src="https://images.pexels.com/photos/5970279/pexels-photo-5970279.jpeg?cs=srgb&dl=pexels-alexandre-saraiva-carniato-5970279.jpg&fm=jpg" class="card-img-top" alt="Activity 2">
+          <div class="card-body">
+            <h5 class="card-title">Cycling</h5>
+            <p class="card-text">Track your cycling sessions and improve your endurance.</p>
+            <a href="#" class="btn btn-primary">Start Tracking</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional activity cards can be added here -->
+
+  </main>
+
+  <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2023 Fitness Tracker. All rights reserved.</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

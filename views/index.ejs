@@ -1,41 +1,49 @@
 <%- include('header') %>
 
-<div class="container mt-4">
+<main class="container mt-4">
+    <h1>Welcome to FlexTrack</h1>
+    <p>Achieve your fitness goals with ease. Track workouts, monitor progress, and stay motivated on your journey to a healthier lifestyle. Let's flex together!!</p>
+
     <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">Workout Summary</h5>
-                </div>
-                <div class="card-body">
-                    <!-- Your workout summary content here -->
-                </div>
-            </div>
+      <div class="col-md-6">
+        <div class="card mb-4">
+          <img src="https://images.pexels.com/photos/3764011/pexels-photo-3764011.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="Activity 1">
+          <div class="card-body">
+            <h5 class="card-title">Running</h5>
+            <p class="card-text">Track your running sessions and analyze your performance.</p>
+            <a href="#" class="btn btn-primary">Start Tracking</a>
+          </div>
         </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">Nutrition Summary</h5>
-                </div>
-                <div class="card-body">
-                    <!-- Your nutrition summary content here -->
-                </div>
-            </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card mb-4">
+          <img src="https://images.pexels.com/photos/5970279/pexels-photo-5970279.jpeg?cs=srgb&dl=pexels-alexandre-saraiva-carniato-5970279.jpg&fm=jpg" class="card-img-top" alt="Activity 2">
+          <div class="card-body">
+            <h5 class="card-title">Cycling</h5>
+            <p class="card-text">Track your cycling sessions and improve your endurance.</p>
+            <a href="#" class="btn btn-primary">Start Tracking</a>
+          </div>
         </div>
+      </div>
     </div>
 
-    <div class="row mt-4">
+    <!-- Additional activity cards can be added here -->
+
+  </main>
+
+    <!-- <div class="row mt-4">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">Progress Chart</h5>
+                    <h5 class="card-title">Quote of the Day</h5>
                 </div>
                 <div class="card-body">
-                    <!-- Your progress chart content here -->
+                    <p><%= quote %></p>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </div> -->
+<!-- </div> -->
 
 <%- include('footer') %>

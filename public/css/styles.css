@@ -1,9 +1,74 @@
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+:root {
+  --primary-color: #000000;
+  --accent-color: #ff6b6b;
+  --light-color: #ffffff;
 }
 
-.container {
-    flex: 1;
+body {
+  background-color: var(--primary-color);
+  background-color: #000000 !important;
+}
+footer.bg-dark {
+  background-color: #000000 !important;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+.navbar {
+  background-color: var(--primary-color);
+}
+
+.navbar-brand,
+.navbar-toggler-icon {
+  color: var(--light-color);
+}
+
+.navbar-nav .nav-link {
+  color: var(--light-color);
+  transition: color 0.2s;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--accent-color);
+}
+
+h1,
+h5,
+p,
+.card-title {
+  color: var(--light-color);
+}
+
+.card {
+  background-color: var(--primary-color);
+  border: none;
+  transition: transform 0.2s;
+  color: var(--light-color);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+}
+
+.card-img-top {
+  border-radius: 5px 5px 0 0;
+}
+
+.btn-primary {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--light-color);
+  border-color: var(--light-color);
+  color: var(--primary-color);
+}
+
+footer {
+  background-color: var(--primary-color);
+  color: var(--light-color);
 }
