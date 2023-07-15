@@ -15,8 +15,6 @@ const secret = process.env.SECRET_KEY;
 const apiKey = process.env.API_KEY;
 const port = 3000;
 
-
-
 app.set('view engine', 'ejs');
 
 app.use(session({
@@ -27,47 +25,51 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // setup passport
 passport.use(new LocalStrategy(
-    async function(username, password, done) {
-      try {
-        const user = await User.findOne({ username: username }).exec();
-        if (!user) {
-          return done(null, false, { message: 'Invalid username or password' });
+    async function (username, password, done) {
+        try {
+            const user = await User.findOne({ username: username }).exec();
+            if (!user) {
+                return done(null, false, { message: 'Invalid username or password' });
+            }
+            const isMatch = await bcrypt.compare(password, user.password);
+            if (isMatch) {
+                return done(null, user);
+            } else {
+                return done(null, false, { message: 'Invalid username or password' });
+            }
+        } catch (error) {
+            return done(error);
         }
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (isMatch) {
-          return done(null, user);
-        } else {
-          return done(null, false, { message: 'Invalid username or password' });
-        }
-      } catch (error) {
-        return done(error);
-      }
     }
-  ));
-  
+));
 
-passport.serializeUser(function(user, done) {
+
+passport.serializeUser(function (user, done) {
     done(null, user.id);
 });
 
-passport.deserializeUser(async function(id, done) {
+passport.deserializeUser(async function (id, done) {
     try {
-      const user = await User.findById(id).exec();
-      done(null, user);
+        const user = await User.findById(id).exec();
+        done(null, user);
     } catch (error) {
-      done(error);
+        done(error);
     }
-  });
+});
 
 // setup user model 
 const userSchema = new mongoose.Schema({
     username: String,
-    password: String
+    password: String,
+    age: Number,
+    weight: Number,
+    height: Number,
+    email: String
 });
 
 const User = mongoose.model("User", userSchema);
@@ -84,7 +86,7 @@ mongoose.connect(databaseURI, {
 });
 
 function ensureAuthenticated(req, res, next) {
-    if(req.isAuthenticated()) {
+    if (req.isAuthenticated()) {
         return next();
     }
     res.redirect("/login");
@@ -96,10 +98,10 @@ app.get("/register", (req, res) => {
 
 app.post("/register", async (req, res) => {
     // handle user registration
-    const {username, password} = req.body;
+    const { username, password, age, weight, height, email } = req.body;
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
-        const user = new User({username, password: hashedPassword});
+        const user = new User({ username, password: hashedPassword, age, weight, height, email });
         await user.save();
         res.redirect("/login");
     } catch (error) {
@@ -109,7 +111,7 @@ app.post("/register", async (req, res) => {
 });
 
 app.get("/login", (req, res) => {
-    res.render("login")
+    res.render("login");
 });
 
 app.post("/login", passport.authenticate("local", {
@@ -124,20 +126,18 @@ app.get("/", ensureAuthenticated, async (req, res) => {
     const category = "fitness";
     try {
         const response = await axios.get('https://api.api-ninjas.com/v1/quotes?category=fitness', {
-          headers: {
-            'X-Api-Key': apiKey
-          }
+            headers: {
+                'X-Api-Key': apiKey
+            }
         });
-    
+
         const quote = response.data[0]['quote'];
         // console.log(quote);
-        res.render("index", {quote: quote});
-      } catch (error) {
+        res.render("index", { quote: quote });
+    } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Failed to fetch random quote' });
-      }
-
-
+    }
 });
 
 app.listen(port, () => {
