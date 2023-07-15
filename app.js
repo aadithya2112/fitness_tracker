@@ -72,8 +72,14 @@ const userSchema = new mongoose.Schema({
     email: String
 });
 
+const workoutSchema = new mongoose.Schema({
+    name: String,
+    description: String,
+    calories_per_hour: Number
+});
+
 const User = mongoose.model("User", userSchema);
-module.exports = User;
+const Workout = mongoose.model("Workout", workoutSchema);
 
 // connect to mongodb
 mongoose.connect(databaseURI, {
@@ -92,8 +98,17 @@ function ensureAuthenticated(req, res, next) {
     res.redirect("/login");
 }
 
-app.get("/register", (req, res) => {
-    res.render("register");
+app.get("/register", async (req, res) => {
+    try {
+        // Query the database to retrieve the workout details
+        const workouts = await Workout.find({}, { calories_per_hour: 0 }).exec();
+
+        // Render the workout.ejs template and pass the workout details to it
+        res.render("workout", { workouts });
+    } catch (error) {
+        console.log(error);
+        // Handle error
+    }
 });
 
 app.post("/register", async (req, res) => {
@@ -121,7 +136,6 @@ app.post("/login", passport.authenticate("local", {
 }));
 
 app.get("/", ensureAuthenticated, async (req, res) => {
-    // var quote = "";
     var by = "";
     const category = "fitness";
     try {
@@ -132,12 +146,21 @@ app.get("/", ensureAuthenticated, async (req, res) => {
         });
 
         const quote = response.data[0]['quote'];
-        // console.log(quote);
-        res.render("index", { quote: quote });
+        res.render("index", { quote });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Failed to fetch random quote' });
     }
+});
+
+app.get("/workouts", ensureAuthenticated, async (req, res) => {
+  try {
+    const workouts = await Workout.find().lean();
+    res.render("workouts", { workouts });
+  } catch (error) {
+    console.log(error);
+    // Handle error
+  }
 });
 
 app.listen(port, () => {
