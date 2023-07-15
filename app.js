@@ -13,7 +13,7 @@ const bcrypt = require("bcrypt");
 const databaseURI = process.env.DATABASE_URI;
 const secret = process.env.SECRET_KEY;
 const apiKey = process.env.API_KEY;
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
 
