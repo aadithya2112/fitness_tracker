@@ -104,7 +104,7 @@ app.get("/register", async (req, res) => {
         const workouts = await Workout.find({}, { calories_per_hour: 0 }).exec();
 
         // Render the workout.ejs template and pass the workout details to it
-        res.render("workout", { workouts });
+        res.render("register");
     } catch (error) {
         console.log(error);
         // Handle error
