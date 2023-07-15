@@ -1,49 +1,40 @@
 <%- include('header') %>
 
-<main class="container mt-4">
-    <h1>Welcome to FlexTrack</h1>
-    <p>Achieve your fitness goals with ease. Track workouts, monitor progress, and stay motivated on your journey to a healthier lifestyle. Let's flex together!!</p>
+<main class="container-fluid mt-4">
+  <div class="banner">
+    <img src="images/banner1.jpg" alt="Banner Image" class="banner-image">
+    <div class="banner-content">
+      <div class="banner-text">
+        <h1>REACH YOUR BEST</h1>
+        <p>Achieve your fitness goals with ease. Track workouts, monitor progress, and stay motivated on your journey to a healthier lifestyle. Let's flex together!!</p>
+        <a href="#" class="btn btn-primary">Sign Up</a>
+        <span>
+          Already a member?
+          <a href="/login">Log In</a>
+        </span>
 
-    <div class="row">
-      <div class="col-md-6">
-        <div class="card mb-4">
-          <img src="images/running2.jpeg" class="card-img-top" alt="Activity 1">
-          <div class="card-body">
-            <h5 class="card-title">Running</h5>
-            <p class="card-text">Track your running sessions and analyze your performance.</p>
-            <a href="#" class="btn btn-primary">Start Tracking</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="card mb-4">
-          <img src="images/cycling.jpeg">
-          <div class="card-body">
-            <h5 class="card-title">Cycling</h5>
-            <p class="card-text">Track your cycling sessions and improve your endurance.</p>
-            <a href="#" class="btn btn-primary">Start Tracking</a>
-          </div>
+        <div class="store-buttons text-center">
+          <a href="#" class="btn btn-store first-download-button"><i class="fab fa-google-play"></i> Download</a>
+          <a href="#" class="btn btn-store second-download-button"><i class="fab fa-apple"></i> Download</a>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Additional activity cards can be added here -->
-
-  </main>
-
-    <!-- <div class="row mt-4">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">Quote of the Day</h5>
-                </div>
-                <div class="card-body">
-                    <p><%= quote %></p>
-                </div>
-            </div>
+  <div class="content">
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <div class="text-content">
+          <h2>SET GOALS.</h2>
+          <h2>LOG WORKOUTS.</h2>
+          <h2>STAY ON TRACK.</h2>
         </div>
-    </div> -->
-<!-- </div> -->
+      </div>
+      <div class="col-md-6">
+        <img src="https://media.istockphoto.com/id/1321090592/photo/young-man-using-mobile-phone-while-exercising-on-treadmill.jpg?s=612x612&w=0&k=20&c=zt3VzvJGiGxI3zdMR1FFO29NKIeRvqgnhh0ZZwtxXKo=" alt="Fitness Image" class="workout-image">
+      </div>
+    </div>
+  </div>
+</main>
 
 <%- include('footer') %>
